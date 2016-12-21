@@ -1,0 +1,75 @@
+Curs 3
+
+D:
+c1
+c2
+c3 ?
+c4 ?
+c5 ?
+
+-> json
+
+D:
+c1
+
+-> array
+
+Angular
+Controller
+ -.ng -> ng controler
+
+View
+-ng directive
+
+Model
+-ng servicii
+-ng factories
+
+Angular -> Google -> afisare de date (formulare, incapsulare)
+React -> Microsoft -> volume mari de date 
+					ex -> scroll pe facebook (aducere de informatii)
+
+https://code.angularjs.org/
+
+min -> inlatura caractere inutile
+carte : clean code
+carte : building my own angular
+
+1. Orice aplicatie de angular are un modul - prima linie
+	[] -> nu depinde de nimic
+2. Orice aplicatie de angular are cel putin un controller liniile 4 - 9
+3. In html trb sa declaram ng-app
+4. In html trebuie sa imi declar cel putin un ng-controller
+
+toate controllerele au un root comun
+
+html ng-app="myApp" (atribut)
+xml -> html (html e un xml) sec 19
+
+xml - mod riguros de a areprezenta datele
+xml - standard
+html e o particularizare a xml
+
+DTD <-> XML  (document type definition)
+
+dtd - limiteaza xml
+html e un xml cu un dtd asociat
+ng-controller exista doar din HTML5 care a introdus posibilitatea sa adaugam atribute custom 
+
+Ce se intapla?
+	- exista un timer in spate ce actualizeaza modelul care e pus in view
+
+{{}} - preiau ceva din angular si pun in javascript - e viewul
+ce e pus pe scope e vizibil
+
+orice e declarat cu ng-model e populat automat in angular
+
+orice e in {{}} - e portiune din cod
+
+--angular -> face match intre obiecte din html si modele pe care le prelucrez mai usor decat daca le iau prin id
+ng-model folosit doar pentru date venite de la utilizator
+
+carte - ngbook
+site egghead.io
+
+Agile

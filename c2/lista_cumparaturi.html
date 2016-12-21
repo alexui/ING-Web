@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista cumparaturi</title>
+	<style type="text/css">
+		.span_style {
+			position: absolute;
+			width: 30px;
+			text-align: right;
+		}
+
+		#overlay {
+	
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: #fff;
+			z-index: 1000;
+			top: 0px;
+			left: 0px;
+			opacity: 0.9;
+		}
+
+		#popUpContainer {
+			border: 2px solid #f00;
+			width: 250px;
+			height: 200px;
+			background-color: #fff;
+			margin: 20px auto 0 auto;
+			text-align: center;
+			padding: 20px;
+		}
+
+	</style>
+	<script type="text/javascript">
+
+		var ADD = "ADD";
+		var REM = "REM";
+		var test_var;
+		var i_element_to_remove;
+
+		function onLoadFunction() {
+			
+			var overlay = document.getElementById("overlay");
+			overlay.style.display = "none";
+		}
+
+		var listaCumparaturi = [];
+		var acceptDuplicate;
+
+		function adaugaTaskNou() {
+			console.log("Am fost apasat...");
+			var textTask = document.getElementById("textTask");
+			var taskNou = textTask.value;
+			var checkbox = document.getElementById("importance");
+			var importance = checkbox.checked;
+
+			var index;
+			var found = 0;
+			for (index = 0; index < listaCumparaturi.length; index++) {
+				if (listaCumparaturi[index].name == taskNou) {
+					test_var = ADD;
+					var overlay = document.getElementById("overlay");
+					overlay.style.display = "block";
+					found = 1;
+				}
+			}
+
+			if (!found) {
+				listaCumparaturi.push({
+										"name": taskNou,
+										"imp":  importance
+										});
+				textTask.value = "";
+				checkbox.checked = false;
+				refreshUi();
+			}
+		}
+
+		function refreshUi() {
+			var lista = document.getElementById("lista");
+			lista.innerHTML = "";
+			var elementHtml;
+
+			for ( var i = 0; i < listaCumparaturi.length; i++) {
+				if (listaCumparaturi[i].imp == true) {
+					elementHtml = "<li style=color:red>" + listaCumparaturi[i].name +"<a onclick ='stergeTask("+i+")' href ='#'><span class ='span_style'>    x</span></a> </li>";
+				}
+				else
+					elementHtml = "<li >" + listaCumparaturi[i].name +"<a onclick ='stergeTask("+i+")' href ='#'><span class ='span_style'>    x</span></a> </li>";
+				lista.innerHTML = lista.innerHTML + elementHtml;
+			}
+			
+			var numarEl = document.getElementById("numar-elemente");
+			numarEl.innerHTML = listaCumparaturi.length;
+		}
+
+		function stergeTask(i) {
+			test_var = REM;
+			i_element_to_remove = i;
+			var overlay = document.getElementById("overlay");
+			overlay.style.display = "block";
+		}
+
+		function doTestare(val) {
+			switch (test_var) {
+				case ADD:
+					var input = document.getElementById("textTask");
+					var checkbox = document.getElementById("importance");
+					var importance = checkbox.checked;
+					if (val) {
+						var taskNou = input.value;
+						listaCumparaturi.push({
+												"name": taskNou,
+												"imp":  importance
+												});
+						refreshUi();
+					}
+					input.value = "";
+					checkbox.checked = false;
+
+					break;
+
+				case REM:
+					if (val) {
+						listaCumparaturi.splice(i_element_to_remove, 1);
+						refreshUi();
+					}
+					break;
+			}
+			
+			var overlay = document.getElementById("overlay");
+			overlay.style.display = "none";
+		}
+	</script>
+</head>
+<body onload="onLoadFunction()">
+	<input type="text" id="textTask" placeholder="task nou ...tare!!!"><br>
+	<input type="checkbox" id="importance">Important<br>
+	<button onclick="adaugaTaskNou()">Adauga</button>
+	<h5>
+		Lista Cumparaturi <span id ="numar-elemente"></span>
+	</h5>
+	<ul id="lista"></ul>
+	<div id="overlay">
+		<div id="popUpContainer">
+			<button onclick="doTestare(1)">Yes</button>
+			<button onclick="doTestare(0)">No</button>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<html>
+<head>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="angular-route.js"></script>
+	<title></title>
+	<style type="text/css">
+	.user {
+		padding: 10px;
+		margin: 10px;
+		width: 300px;
+		border: 1px solid #00f;
+		float: left;
+		display: inline-block;
+		position: relative;
+	}
+
+	.user b {
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	.del-link {
+		color: #f00;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		cursor: pointer;
+	}
+
+	.edit-link {
+		color: #00f;
+		position: absolute;
+		top: 10px;
+		right: 30px;
+		cursor: pointer;
+	}
+
+	input {
+		display: block;
+		margin-bottom: 10px;
+	}
+	</style>
+</head>
+<body ng-app="myApp">
+	<div>
+		<a ng-href="">Add user</a> |
+		<a ng-href="#/list">List all users</a> |
+		<a ng-href="#/about">About</a>
+	</div>
+
+	<div ng-view> </div>
+
+
+	<script type="text/javascript">
+		var myApp = angular.module("myApp", ['ngRoute']);
+
+		myApp.config(function($routeProvider) {
+			$routeProvider
+			.when(
+				"/about",
+				{
+					template: `<h1>This is the about page</h1>`
+				}
+			)
+			.when(
+				"/list",
+				{
+					template: `
+						<div ng-repeat="user in users">
+							<user data="{{user}}"></user>
+						</div>
+					`,
+					controller: mainCtrl
+				}
+			)
+			.when(
+				"/add/:id",
+				{
+					template: `
+						<input type="text" placeholder="name" ng-model="user.name" />
+						<input type="text" placeholder="email" ng-model="user.email" />
+						<input type="text" placeholder="website" ng-model="user.website" />
+						<button ng-click="doRedirect()">GOTO</button>
+					`,
+					controller : addUserCtrl
+				}
+			)
+			$routeProvider.otherwise({redirectTo: '/about'});
+		});
+
+		var addUserCtrl = function($scope, theService, $routeParams, $location) {
+			theService.getUser($routeParams.id).then(
+				function(data) {
+					$scope.user = data.data;
+				},
+				function(err) {
+					alert("there is an error");
+				}
+			)
+
+			$scope.doRedirect = function() {
+				$location.url('/about')
+			}
+		}
+
+		var mainCtrl = function($scope, theService) {
+				$scope.users = {};
+
+				function updateUserList() {
+					theService.getPosts().then(
+						function(data) {
+							console.log(data);
+							$scope.users = data.data;
+						}, 
+						function(err) {
+							alert("buff");
+						}
+					)
+				}
+
+				updateUserList();
+
+				$scope.$on(
+					"doUpdateUserList",
+					function() {
+						updateUserList();
+					}
+				)
+			}
+
+		myApp.service(
+			"theService",
+			function($http) {
+
+				var service = {};
+
+				service.getPosts = function() {
+					return $http({
+						method: 'GET',
+  						url: 'http://jsonplaceholder.typicode.com/users'
+					})
+				}
+
+				service.deleteUser = function(userId) {
+					return $http({
+						method: 'DELETE',
+  						url: 'http://jsonplaceholder.typicode.com/users/' + userId
+					})
+				}
+
+				service.getUser = function(userId) {
+					return $http({
+						method: 'GET',
+  						url: 'http://jsonplaceholder.typicode.com/users/' + userId
+					})
+				}
+
+				return service;
+
+			}
+		)
+
+		myApp.directive(
+			"user",
+			function(theService) {
+				return {
+					restrict: "E", 
+					scope: {data: "@"},
+					template: `
+						<div class="user">
+							<b>{{user.name}}</b>
+							<div>email:{{user.email}}</div>
+							<div>website:{{user.website}}</div>
+							<span class="del-link" ng-click="deleteUser()">X</span>
+							<a ng-href="#/add/{{user.id}}" class="edit-link">E</a>
+						</div>
+					`,
+					link: function(scope) {
+						scope.user = angular.fromJson(scope.data);
+						console.log(scope.user);
+						scope.deleteUser = function() {
+							if (confirm("Are you sure you want to delete")) {
+								theService.deleteUser(scope.user.id).then(
+									function(data) {
+										console.log(data);
+										scope.$emit("doUpdateUserList");
+									},
+									function(err) {
+										console.log(err);
+									}
+								)
+							}
+						}
+					}
+				}
+			}
+		)
+	</script>
+</body>
+</html>

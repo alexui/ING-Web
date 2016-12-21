@@ -1,0 +1,14 @@
+
+#layer {
+	width: 250px;
+	height: 200px;
+	background-color: #f0f;
+	text-align: center;
+	padding: 20px;
+	margin: 20px auto 0 auto;
+}
+
+input {
+	width: 100%;
+	margin-bottom: 30%;
+}

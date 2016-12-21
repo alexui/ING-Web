@@ -1,0 +1,9 @@
+.has-error {
+	background-color: #f00;
+	font-weight: bold;
+	color: #fff;
+}
+
+input {
+	width: 200px;
+}

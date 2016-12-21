@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Curs Valutar</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="cursvalutar.js"></script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<input type="number" placeholder="Insert value here." ng-model="sum"/>
+		RON = {{sum/selectedMon}}
+		<select ng-model="selectedMon" ng-options="o.value as o.label for o in listMon"></select>
+	</div>
+</body>
+</html>

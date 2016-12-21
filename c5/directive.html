@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src = "angular.js"></script>
+</head>
+<body ng-app="myApp">
+	<salut textsalut="Salut ce faci ?"></salut>
+	<editable text="gigi"></editable>
+	<a ng-href="alabala"></a>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp", []);
+
+		myApp.directive(
+			"salut",
+			function () {
+				return {
+					restrict : "E",
+					//template: "<h1>{{textsalut}}</h1>",
+					template: "<h1 ng-click='handleClick()'>s-a dat click de {{numarClickuri}}: ori</h1>",
+					scope: {textsalut: "@"},
+					link : function (scope, element, attr) {
+						scope.numarClickuri = 0;
+						//scope.textSalut = attr.textsalut; nu mai e nevoie odata cu @ de mai sus
+						//element.bind(
+						//	"click",
+						//	function() {
+						//		scope.numarClickuri++;
+						//		console.log(scope.numarClickuri);
+						//		scope.$apply();
+						//	}
+						//)
+
+						scope.handleClick = function () {
+							scope.numarClickuri++;
+						}
+					}
+				}
+			}
+		)
+
+		myApp.controller(
+			"appCtrl",
+			function ($scope) {
+				$scope.listaTari = [
+					"Germania", "Belgia", "Olanda", "Danemarca", "Anglia"
+				];
+			}
+		)
+
+		myApp.directive(
+			"editable",
+			function () {
+				return {
+					restrict : "E",
+					template: `
+						<div>
+							<span ng-hide="isInEditMode" ng-click="handleClick()">{{text}}</span>
+							<input ng-show="isInEditMode" type="text" ng-model="text" ng-keydown="handleKey($event)"/>
+						</div>
+					`,
+					scope: {text: "@"},
+					link: function (scope, element, attr) {
+						var clone = "";
+						scope.isInEditMode = false;
+
+						scope.handleClick = function () {
+							scope.isInEditMode = true;
+							clone = scope.text;
+						}
+
+						scope.handleKey = function ($event) {
+							var keycode = $event.keyCode;
+
+							if ((keycode == 13))
+								scope.isInEditMode = false;
+							else {
+								if (keycode == 27) {
+									scope.text = clone;
+									scope.isInEditMode = false;
+								}
+							}
+						}
+					}
+				}
+			}
+		)
+	</script>
+
+</body ng-app="myApp">
+	<div ng-controller="appCtrl">
+		<input type="text" placeholder="searchTerm" ng-model="searchTerm"/>
+		<div ng-repeat="tara in listaTari | filter : searchTerm | orderBy">
+			<editable text="{{tara | uppercase}}"></editable>
+		</div>
+		
+	</div>
+</html>

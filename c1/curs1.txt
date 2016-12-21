@@ -1,0 +1,49 @@
+type este un atribut
+nu e o idee buna sa pun css javascript in html
+
+Containere
+	-div
+	-p
+	-span
+
+Taguri
+	-nu se pun divuri in paragrafuri
+
+CSS
+	culoare - RGB se reprezinta #xxx, x = {0..F}
+	pot sa am mai multe clase pe un element
+
+
+	<p>Salut <span style = "color : #f00;"> salut </span></p>
+	<p>Salut <span style = "color : #0f0;"> salut </span></p>
+	<p>Salut <span style = "color : #f0f;"> salut </span></p>
+
+	position absolute: trebuie mentionate si h si w
+
+	Applicatie
+Cum interceptez un click, sursa clickului, cum modific din js o proprietate de CSS, cum generam un numar la intamplare?
+
+Evenimente de UI
+	onclick
+	onmouseenter
+	onkeypresserd
+	onmouseover
+	ondrag
+
+	console.log(event.target);
+	var x = document.getElementById("div1");
+
+Pop up
+	
+pentru tot documentul
+* {
+padding: 0;
+margin: 0;
+}
+
+z-index??
+
+prioritate: default, absolute, relativ (butonul e default, divurile sunt absolute)
+	div absolut 100 % pt w si h acopera celelalte 2 divuri absolute
+
+margin : 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Directive</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="angular-route.js"></script>
+	<script type="text/javascript" src="directive.js"></script>
+	<style type="text/css">
+		.card {
+			background-color: #ff0;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			padding: 10px;
+			margin: 10px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		<gamecard name="player">{{element}}</gamecard>
+		<gamecard name="CPU">{{element}}</gamecard>
+		<br>
+		<button ng-click="startGame()">Start Game</button>
+	</div>
+</body>
+</html>

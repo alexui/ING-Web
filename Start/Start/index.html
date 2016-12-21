@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8"/>
+		<title>Order</title>
+		<link href="style.css" rel="stylesheet" />
+	</head>
+
+	<body ng-app="orderApp" ng-controller="OrderFormController">
+		<form>
+			<h1>Products</h1>
+			<ul>
+				<li name="prod" ng-repeat="product in products" ng-click="doClick($index)" ng-class="{'active': product.active}">
+					{{product.name}}
+					<span class="product-price">{{product.price}}</span>
+				</li>
+			</ul>
+			<div class="total">
+				Total: <span class="total-sum">{{totalSum}}</span>
+			</div>
+		</form>
+
+		<script src="angular.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>
+		Curs6
+	</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="angular-route.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+
+	<style type="text/css">
+		.user-card {
+			display: inline-block;
+			border: 1px solid #00f;
+			padding: 10px;
+			width: 300px;
+			float: left;
+			margin: 10px;
+			position: relative;
+		}
+
+		.delete-link {
+			color: #f00;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor: pointer;
+		}
+
+		.edit-link {
+			color: #0f0;
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			cursor: pointer;
+		}
+
+	</style>
+</head>
+<body ng-app="myApp">
+	<a ng-href="#/add"> Add user </a> |
+	<a ng-href="#/list"> List users </a> |
+	<a ng-href="#/about"> About </a> |
+
+	<div ng-view></div>
+</body>
+</html>

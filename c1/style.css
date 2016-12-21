@@ -1,0 +1,64 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#div1, #div2 {
+	height: 10px;
+	position: absolute;
+	width: 100px;
+}
+
+#div1 {
+	background-color: #00f;
+	top: 70px;
+	left : 10px;
+}
+
+#div2 {
+	
+	background-color: #f00;
+	top: 30px;
+	left:300px;
+}
+
+.myClass {
+	border: 10px dashed #0f0;
+}
+
+#overlay {
+	
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #fff;
+	z-index: 1000;
+	top: 0px;
+	left: 0px;
+	opacity: 0.9;
+}
+
+#popUpContainer {
+	border: 2px solid #f00;
+	width: 250px;
+	height: 200px;
+	background-color: #fff;
+	margin: 20px auto 0 auto;
+	text-align: center;
+	padding: 20px;
+
+}
+
+#cssText {
+	background-color: #0f0;
+	margin: 30px 100px 0px 10px;
+}
+
+input {
+	width: 100%;
+	margin-bottom: 30%;
+}
+
+/*
+comentariu
+*/

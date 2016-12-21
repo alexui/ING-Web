@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Lista</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src= "aplic.js"></script>
+	<style type="text/css">
+		tr, td {
+		    border: 1px solid black;
+		   	border-collapse: collapse;
+		   	border-spacing: 0;
+		}
+	</style>
+</head>
+<body>
+	<div ng-controller=".mainCtrl">
+		<div>
+			<input type="text" placeholder="nume" ng-model="nume" />
+			<input type="text" placeholder="an angajare" ng-model="anAngajare"/>
+			<input type="text" placeholder="email" ng-model="email" />
+			<button ng-click="addAngajat()">Add</button>
+		</div>
+		
+		<div>
+			<ul>
+				<li ng-repeat=>{{angajat.nume}}</li>
+			</ul>
+
+			<table>
+				<tr ng-repeat="angajat in listaAngajati">
+					<td>{{angajat.nume}}
+					<td>{{angajat.an}}
+					<td>{{angajat.email}}</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+</body>
+</html>

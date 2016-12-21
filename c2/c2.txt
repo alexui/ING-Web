@@ -1,0 +1,58 @@
+json
+ 	-javascript object notation
+mozilla javascript oop tutorial
+type script
+
+daca am un formular il trimit la server in forma json
+jsonExample e un obiect
+
+Aplicatie
+
+
+lista.innerHTML = lista.innerHTML + elementHtml; apendeaza la o lista
+
+var elementHtml = "<li>" + taskNou + "</li>";
+lista.innerHTML = lista.innerHTML + elementHtml;
+listaCumparaturi.push(taskNou);
+var numarEl = document.getElementById("numar-elemente");
+
+logica- adauga sterge
+view - html + refresh
+model - lista de cumparaturi
+
+Tema 
+Vreau confirmare pt delete item
+Vreau sa ma intrebe daca vreau sa introduc duplicate
+Vreau sa am un checkbox care daca il bifez daca e important sau nu
+
+span are un display in line default
+div are un display block default
+	width se aplica pe div nu pe snan wtf? - e vorba de display : aaaaaaaa
+
+block asculta de width si height
+in-line nu
+
+in css3 e o proprietate de a seta box w la width setat de mine
+
+float.html
+	div container ia inaltimea celor doua divuri din interior
+	latimea e pe tot ecranul
+
+	cand pun float: divul container nu mai stie despre divurile copii (scoate din flow)
+	ca sa opresc asta adaug un div cu float stop
+	csstricks.com
+	headfirstcss (carte)
+	daca includem fisierul normalize.css reseteaza preferintele browserului
+
+Position.html
+	position: relative - relativ fata de flowul normal
+						- folosit de pt ajustari fine
+						- nu e recomandat- pt ca nu stim dim ecranului
+						- spatiul vechi ramane ocupat in continuare
+	position: fixed - divurile sunt scoase din flowl nornal
+
+	pozitionare_absoluta - se raporteaza la parintele lor
+		-spatiul vechi nu ramane ocupat ca in cazul relative
+
+media querry 
+responsive design

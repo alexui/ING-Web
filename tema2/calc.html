@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Calculator</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="calc.js"></script>
+</head>
+<body>
+	<div ng-controller=".mainCtrl">
+		<input type="text" ng-model="operandOne">
+		<ul style="list-style-type: none; display:inline-block; padding: 0px; margin: 0px" >
+			<li><button ng-click="add()">Add</button></li>
+			<li><button ng-click="sub()">Sub</button></li>
+		</ul>
+		<input type="text" ng-model="operandTwo">
+		=
+		<div style="border:1px solid #000; display:inline-block; position:absolute; width:40px; height:40px; margin:3px; text-align:center;">
+			<span style="vertical-align:bottom; position:relative">{{result}}</span>
+	</div>
+	</div>
+	
+</body>
+</html>

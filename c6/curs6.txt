@@ -1,0 +1,45 @@
+curs6
+
+service e inclus in appService
+trebuie returnat service
+
+serviciu REST
+
+http://jsonplaceholder.typicode.com/
+
+javascript e asincron = nu blocheaza programul daca se blocheaza la o linie
+
+Promise : .then(succes, fail)
+pe success intra cand am status code 200
+	fail -//- code 404
+data
+
+diferenta link- controller in directive
+	in momentul rularii
+		link se executa la compilare inainte ca directiva sa fie afisata
+		controller se executa pe toata durata existententei directivei
+
+myApp.directive(
+	"user",
+	function() {
+		return {
+			restrict: "E".
+			scope: {data, "@"}
+		}
+		link: function(scope) {
+
+		},
+		controller: function() {
+			
+		}
+	}
+)
+
+rutare
+	https://code.angularjs.org/
+o aplicatie are un singur ng-view
+#/ - link intern
+
+decitit - rutare, servicii, httpcalls, directive
+
+metadata schema org, rdf

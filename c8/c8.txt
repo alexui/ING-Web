@@ -1,0 +1,27 @@
+curs8
+
+Prezentare
+
+npm - package manager
+	default package manager for javaScript
+
+bower - dependency manager
+
+Grunt - utilitar pt node npm
+	concatenare bla 
+	face build
+	similar cu maven
+
+protracter sau selenium web driver
+	testere automate
+	protracter - e adaptat pt angular
+	selenium - e general
+
+https://github.com/gabibo/lib
+html nu e case sensitive
+
+sa nu folosim timerul default din javascript in angular
+
+adaugare parametri la directive
+	scope: {name:"@"},
+	sau link : function (..,..,attr)

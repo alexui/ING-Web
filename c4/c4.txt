@@ -1,0 +1,28 @@
+scope - legatura dintre controller si view
+
+Aplicatie
+
+foarte rar se pune scope.x unde x nu e compusa , e o primitiva
+
+daca as fi avut push ({
+						//json obiect
+						})
+asa am facut in aplic.js
+=>mai mult cod
+
+form e identificat automat in angular, nu ne trebuie ng-model
+
+name in elemente e folosit pe identificarea lor in formuri
+
+clasele din html
+.error -> .has-error da eroare
+=>dam ca string
+
+validari js -
+required
+type
+
+input type :
+			combo box (select)
+			sunt tentat sa folosesc ng-repeat !not good
+			folosim ng-options

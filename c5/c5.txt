@@ -1,0 +1,103 @@
+c5.txt
+
+<a>
+	<b> <b>
+	<b>
+		<c> </c>
+	</b>
+</a>
+
+DOM
+
+	a
+ ___|___
+/       \
+b       b
+		|
+		c
+
+
+ng-model = "x"; nu e bine
+ng-model = "d.x"; e mai bine
+
+nu se propaga bine parinte copil
+
+rootScope - parintele tuturor scopurilor 
+
+
+Tema
+
+directive angular 
+
+<body>
+	<div > test > </div>
+	<salut> </salut>
+</body>
+
+DTD - document type definition - mai permisiv dupa html4
+crere componente noi : polymer, web components google
+
+includere de directive -> salut
+	myApp.directive()
+
+	ex: ng-model, ng-app, ng-repeat
+
+	restrict: "E" - element
+			  "A" - atribut
+			  "AE" - atribut, element
+
+	accesare atribut link
+		un controler al directivei noastre - logica
+
+	$ - proprietate angular care e permisa developerului
+	$$ - nu e trb noastra, functionare angular
+
+
+html nu e key sensitive
+
+link : function (scope, element, attr)
+element - se refera la elementul de html
+https://docs.angularjs.org/api/ng/function/angular.element
+	bind - listeneri
+
+two-way binding - angular are un timer
+$apply -> se updateaza angular manual
+element e un jqLite 
+
+bindul se face la obiect de angular
+	evenimente angular - ng -> cupleaza angular cu UI
+
+element.bind(
+				"click",
+				function() {
+					scope.numarClickuri++;
+					console.log(scope.numarClickuri);
+					scope.$apply();
+				}
+			) 
+			e un obiect extern angular
+
+
+Anglar are propriul modul de rutare
+
+se poate template : "mydirective.html"
+
+Chrome
+	esc nu e interceptat la keypressed - > doar la keyDown
+
+Filtre angular
+{{5 | currency}}
+
+Tema citire despre filtre
+	filtre default
+	filtre custom
+
+	filter : 'an'
+
+tema recapitulare
+	exemple cu validari
+	formulare
+	formulare mai multi pasi
+	ngbook - directive, filtre;
+	...IO
+	filtru pentru primele x caractere ale unui string

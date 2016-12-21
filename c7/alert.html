@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alert</title>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript">
+		var myApp = angular.module("myApp", []);
+
+		myApp.controller(
+			"myCtrl",
+			function ($scope) {
+				$scope.inputText = "";
+
+				$scope.lungime = function () {
+					if ($scope.newRowForm.$valid)
+						alert($scope.inputText.length);
+				}
+
+				$scope.clear = function () {
+					$scope.inputText = "";
+				}
+			}
+		)
+
+	</script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+
+		<form name="newRowForm">
+			<input type="text" placeholder="Insert text." ng-model="inputText" ng-required="true"/>
+			<br>
+			<button ng-click="lungime()">Lungime</button>
+			<button ng-click="clear()">Clear</button>
+			<div style="color:#fff; background-color: #f00;" ng-if = "newRowForm.$invalid && !newRowForm.$pristine">
+				A aparut eroare;
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>
